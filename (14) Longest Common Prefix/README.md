@@ -20,7 +20,7 @@ $$O(n*m)$$, where n is the number of words in the input vector **strs** and m is
 $$O(m)$$, where m is the length of the longest common prefix
 
 # Code
-```
+```c++
 class Solution {
 public:
     string longestCommonPrefix(vector<string>& strs) {

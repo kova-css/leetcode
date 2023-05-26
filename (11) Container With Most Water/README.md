@@ -23,7 +23,7 @@ $$O(n)$$,  where **n** is the number of elements in **height**
 $$O(1)$$
 
 # Code
-```
+```c++
 class Solution {
 public:
     int maxArea(vector<int>& height) {

@@ -21,7 +21,7 @@ $$O(N * K log K)$$, where N is the total number of strings in the input vector *
 $$O(N * K)$$, where N is the number of strings and K is the average length of the strings
 
 # Code
-```
+```c++
 class Solution {
 public:
     vector<vector<string>> groupAnagrams(vector<string>& strs) {
