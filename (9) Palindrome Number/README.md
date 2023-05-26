@@ -22,7 +22,7 @@ $$O(log10(x))$$
 $$O(1)$$
 
 # Code
-```
+```c++
 class Solution {
 public:
 

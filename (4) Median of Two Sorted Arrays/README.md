@@ -18,7 +18,7 @@ $$O(n)$$, where n is the sum of the sizes of **nums1** and **nums2**.
 $$O(n)$$, where n is the sum of the sizes of **nums1** and **nums2**.
 
 # Code
-```
+```c++
 class Solution {
 public:
     double findMedianSortedArrays(vector<int>& nums1, vector<int>& nums2) {
