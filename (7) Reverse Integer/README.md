@@ -17,9 +17,13 @@ It's worth noting that the code uses a **long long** data type for **y** to hand
 # Complexity
 - Time complexity:
 $$O(log10(x))$$, where x is the input integer
+    - Beats:
+    **100%**
 
 - Space complexity:
 $$O(1)$$
+    - Beats:
+    **57.80%**
 
 # Code
 ```c++
