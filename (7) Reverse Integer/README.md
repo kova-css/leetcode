@@ -1,18 +1,19 @@
 # Intuition
-This one was fairly simple, we even did this in school. The main difference was that this problem required that the answer was in a 32-bit limit. The main idea is that we have a new empty number and just one-by-one place the last digit of the original to the end of the new one.
+
+I'd like to thank **[@maareftam](https://leetcode.com/maareftam/)** for spotting a critical problem in the solution<3. This is the fixed solution.
+
+This one was fairly simple, we even did this in school. The main difference was that this problem required that the code to run in a 32-bit system. The main idea is that we have a new empty number and just one-by-one place the last digit of the original to the end of the new one, while being cautious about stepping over the limit.
 
 # Approach
-1. Initialize a variable **y** to store the reversed integer, initially set to 0.
-2. Check if the input integer **x** is negative. If it is, set a boolean variable **minus** to true and convert **x** to its absolute value.
-3. In a while loop, iterate until **x** becomes 0. In each iteration:
-    - Multiply **y** by 10 and add the last digit of **x** (obtained by **x % 10**) to **y**.
-    - Update **x** by integer division (**x /= 10**) to remove the last digit.
-4. After the loop, check if the reversed integer **y** exceeds the range of 32-bit signed integer (**INT32_MIN** and **INT32_MAX**). If it does, return 0.
-5. Return the reversed integer **y** as the result. If the original number was negative, multiply **y** by -1.
+1. Initialize a variable **y** to store the reversed integer. Set it to 0 initially.
+2. Iterate until the input integer **x** becomes 0.
+3. Within each iteration:
+  - Check if **y** is going to exceed the range of a 32-bit signed integer (**INT32_MAX** or **INT32_MIN**) after multiplying by 10. If so, return 0.
+  -  Multiply **y** by 10 and add the least significant digit of **x** to **y** by calculating **x % 10**.
+  - Update x by dividing it by 10 to remove the least significant digit.
+4. After the iteration, return the final value of **y** as the reversed integer.
 
-The approach involves extracting the digits from the input integer **x** one by one using modulo operations, then constructing the reversed integer **y** by multiplying it by 10 and adding the next digit. Finally, the range of the resulting reversed integer is checked, and the appropriate sign is applied based on the original number.
-
-It's worth noting that the code uses a **long long** data type for **y** to handle cases where the reversed integer might exceed the range of a 32-bit integer during the intermediate calculations.
+This approach reverses the given integer by iteratively extracting the least significant digit from **x** and appending it to the reversed integer **y**. The check for integer overflow is performed to ensure that the reversed integer remains within the range of a 32-bit signed integer.
 
 # Complexity
 - Time complexity:
@@ -29,21 +30,15 @@ $$O(1)$$
 ```c++
 class Solution {
 public:
-    long long reverse(long long x) {
-        long long y = 0;
-        bool minus = false;
-        if (x < 0) {
-            minus = true;
-            x = -x;
-        }
-        while (x > 0) {
+    int reverse(int x) {
+        int y = 0;
+        while (x != 0) {
+            if (y > INT32_MAX / 10 || y < INT32_MIN / 10)
+                return 0;
             y = y * 10 + (x % 10);
-            x/=10;
+            x /= 10;
         }
-        if (y < INT32_MIN || y > INT32_MAX) {
-            return 0;
-        }
-        return minus ? -y : y;
+        return y;
     }
 };
 ```
