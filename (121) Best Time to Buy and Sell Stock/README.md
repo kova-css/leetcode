@@ -20,7 +20,7 @@ $$O(n)$$, where n is the number of prices in the input vector
 $$O(1)$$
 
 # Code
-```
+```c++
 class Solution {
 public:
     int maxProfit(vector<int>& prices) {
